@@ -1,24 +1,30 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { PublicLayout } from "@/components/site/public-layout";
+import { About, Features, FinalCta, Hero, HowItWorks, SmartAI } from "@/components/site/sections";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "SmartBus-AI — Your Journey. Made Smarter." },
+      { name: "description", content: "Live college bus tracking, smart ETA and occupancy predictions, and alternative-bus suggestions." },
+      { property: "og:title", content: "SmartBus-AI — Your Journey. Made Smarter." },
+      { property: "og:description", content: "Smarter campus mobility through real-time tracking and intelligent predictions." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <PublicLayout>
+      <Hero />
+      <Features />
+      <HowItWorks />
+      <SmartAI />
+      <About />
+      <FinalCta />
+    </PublicLayout>
   );
 }
