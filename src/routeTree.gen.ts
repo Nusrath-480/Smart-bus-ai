@@ -22,8 +22,14 @@ import { Route as AuthenticatedDriverRouteImport } from './routes/_authenticated
 import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
 import { Route as AuthenticatedSetupRouteImport } from './routes/_authenticated/setup'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
+import { Route as AuthenticatedAdminAssignmentsRouteImport } from './routes/_authenticated/admin.assignments'
+import { Route as AuthenticatedAdminBusesRouteImport } from './routes/_authenticated/admin.buses'
+import { Route as AuthenticatedAdminSchedulesRouteImport } from './routes/_authenticated/admin.schedules'
+import { Route as AuthenticatedAdminUsersRouteImport } from './routes/_authenticated/admin.users'
 import { Route as AuthenticatedStudentIndexRouteImport } from './routes/_authenticated/student.index'
 import { Route as AuthenticatedStudentRoutesRouteImport } from './routes/_authenticated/student.routes'
+import { Route as AuthenticatedAdminRoutesIndexRouteImport } from './routes/_authenticated/admin.routes.index'
+import { Route as AuthenticatedAdminRoutesRouteIdRouteImport } from './routes/_authenticated/admin.routes.$routeId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -89,6 +95,28 @@ const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AuthenticatedAdminRoute,
 } as any)
+const AuthenticatedAdminAssignmentsRoute =
+  AuthenticatedAdminAssignmentsRouteImport.update({
+    id: '/assignments',
+    path: '/assignments',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminBusesRoute = AuthenticatedAdminBusesRouteImport.update({
+  id: '/buses',
+  path: '/buses',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
+const AuthenticatedAdminSchedulesRoute =
+  AuthenticatedAdminSchedulesRouteImport.update({
+    id: '/schedules',
+    path: '/schedules',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminUsersRoute = AuthenticatedAdminUsersRouteImport.update({
+  id: '/users',
+  path: '/users',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
 const AuthenticatedStudentIndexRoute =
   AuthenticatedStudentIndexRouteImport.update({
     id: '/student/',
@@ -100,6 +128,18 @@ const AuthenticatedStudentRoutesRoute =
     id: '/student/routes',
     path: '/student/routes',
     getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAdminRoutesIndexRoute =
+  AuthenticatedAdminRoutesIndexRouteImport.update({
+    id: '/routes/',
+    path: '/routes/',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminRoutesRouteIdRoute =
+  AuthenticatedAdminRoutesRouteIdRouteImport.update({
+    id: '/routes/$routeId',
+    path: '/routes/$routeId',
+    getParentRoute: () => AuthenticatedAdminRoute,
   } as any)
 
 export interface FileRoutesByFullPath {
@@ -114,9 +154,15 @@ export interface FileRoutesByFullPath {
   '/driver': typeof AuthenticatedDriverRoute
   '/profile': typeof AuthenticatedProfileRoute
   '/setup': typeof AuthenticatedSetupRoute
+  '/admin/assignments': typeof AuthenticatedAdminAssignmentsRoute
+  '/admin/buses': typeof AuthenticatedAdminBusesRoute
+  '/admin/schedules': typeof AuthenticatedAdminSchedulesRoute
+  '/admin/users': typeof AuthenticatedAdminUsersRoute
   '/student/routes': typeof AuthenticatedStudentRoutesRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
   '/student/': typeof AuthenticatedStudentIndexRoute
+  '/admin/routes/$routeId': typeof AuthenticatedAdminRoutesRouteIdRoute
+  '/admin/routes/': typeof AuthenticatedAdminRoutesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -129,9 +175,15 @@ export interface FileRoutesByTo {
   '/driver': typeof AuthenticatedDriverRoute
   '/profile': typeof AuthenticatedProfileRoute
   '/setup': typeof AuthenticatedSetupRoute
+  '/admin/assignments': typeof AuthenticatedAdminAssignmentsRoute
+  '/admin/buses': typeof AuthenticatedAdminBusesRoute
+  '/admin/schedules': typeof AuthenticatedAdminSchedulesRoute
+  '/admin/users': typeof AuthenticatedAdminUsersRoute
   '/student/routes': typeof AuthenticatedStudentRoutesRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
   '/student': typeof AuthenticatedStudentIndexRoute
+  '/admin/routes/$routeId': typeof AuthenticatedAdminRoutesRouteIdRoute
+  '/admin/routes': typeof AuthenticatedAdminRoutesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -147,9 +199,15 @@ export interface FileRoutesById {
   '/_authenticated/driver': typeof AuthenticatedDriverRoute
   '/_authenticated/profile': typeof AuthenticatedProfileRoute
   '/_authenticated/setup': typeof AuthenticatedSetupRoute
+  '/_authenticated/admin/assignments': typeof AuthenticatedAdminAssignmentsRoute
+  '/_authenticated/admin/buses': typeof AuthenticatedAdminBusesRoute
+  '/_authenticated/admin/schedules': typeof AuthenticatedAdminSchedulesRoute
+  '/_authenticated/admin/users': typeof AuthenticatedAdminUsersRoute
   '/_authenticated/student/routes': typeof AuthenticatedStudentRoutesRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
   '/_authenticated/student/': typeof AuthenticatedStudentIndexRoute
+  '/_authenticated/admin/routes/$routeId': typeof AuthenticatedAdminRoutesRouteIdRoute
+  '/_authenticated/admin/routes/': typeof AuthenticatedAdminRoutesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -165,9 +223,15 @@ export interface FileRouteTypes {
     | '/driver'
     | '/profile'
     | '/setup'
+    | '/admin/assignments'
+    | '/admin/buses'
+    | '/admin/schedules'
+    | '/admin/users'
     | '/student/routes'
     | '/admin/'
     | '/student/'
+    | '/admin/routes/$routeId'
+    | '/admin/routes/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -180,9 +244,15 @@ export interface FileRouteTypes {
     | '/driver'
     | '/profile'
     | '/setup'
+    | '/admin/assignments'
+    | '/admin/buses'
+    | '/admin/schedules'
+    | '/admin/users'
     | '/student/routes'
     | '/admin'
     | '/student'
+    | '/admin/routes/$routeId'
+    | '/admin/routes'
   id:
     | '__root__'
     | '/'
@@ -197,9 +267,15 @@ export interface FileRouteTypes {
     | '/_authenticated/driver'
     | '/_authenticated/profile'
     | '/_authenticated/setup'
+    | '/_authenticated/admin/assignments'
+    | '/_authenticated/admin/buses'
+    | '/_authenticated/admin/schedules'
+    | '/_authenticated/admin/users'
     | '/_authenticated/student/routes'
     | '/_authenticated/admin/'
     | '/_authenticated/student/'
+    | '/_authenticated/admin/routes/$routeId'
+    | '/_authenticated/admin/routes/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -305,6 +381,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
+    '/_authenticated/admin/assignments': {
+      id: '/_authenticated/admin/assignments'
+      path: '/assignments'
+      fullPath: '/admin/assignments'
+      preLoaderRoute: typeof AuthenticatedAdminAssignmentsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/buses': {
+      id: '/_authenticated/admin/buses'
+      path: '/buses'
+      fullPath: '/admin/buses'
+      preLoaderRoute: typeof AuthenticatedAdminBusesRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/schedules': {
+      id: '/_authenticated/admin/schedules'
+      path: '/schedules'
+      fullPath: '/admin/schedules'
+      preLoaderRoute: typeof AuthenticatedAdminSchedulesRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/users': {
+      id: '/_authenticated/admin/users'
+      path: '/users'
+      fullPath: '/admin/users'
+      preLoaderRoute: typeof AuthenticatedAdminUsersRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
     '/_authenticated/student/': {
       id: '/_authenticated/student/'
       path: '/student'
@@ -319,15 +423,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedStudentRoutesRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/admin/routes/': {
+      id: '/_authenticated/admin/routes/'
+      path: '/routes'
+      fullPath: '/admin/routes/'
+      preLoaderRoute: typeof AuthenticatedAdminRoutesIndexRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/routes/$routeId': {
+      id: '/_authenticated/admin/routes/$routeId'
+      path: '/routes/$routeId'
+      fullPath: '/admin/routes/$routeId'
+      preLoaderRoute: typeof AuthenticatedAdminRoutesRouteIdRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
   }
 }
 
 interface AuthenticatedAdminRouteChildren {
+  AuthenticatedAdminAssignmentsRoute: typeof AuthenticatedAdminAssignmentsRoute
+  AuthenticatedAdminBusesRoute: typeof AuthenticatedAdminBusesRoute
+  AuthenticatedAdminSchedulesRoute: typeof AuthenticatedAdminSchedulesRoute
+  AuthenticatedAdminUsersRoute: typeof AuthenticatedAdminUsersRoute
   AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
+  AuthenticatedAdminRoutesRouteIdRoute: typeof AuthenticatedAdminRoutesRouteIdRoute
+  AuthenticatedAdminRoutesIndexRoute: typeof AuthenticatedAdminRoutesIndexRoute
 }
 
 const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
+  AuthenticatedAdminAssignmentsRoute: AuthenticatedAdminAssignmentsRoute,
+  AuthenticatedAdminBusesRoute: AuthenticatedAdminBusesRoute,
+  AuthenticatedAdminSchedulesRoute: AuthenticatedAdminSchedulesRoute,
+  AuthenticatedAdminUsersRoute: AuthenticatedAdminUsersRoute,
   AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
+  AuthenticatedAdminRoutesRouteIdRoute: AuthenticatedAdminRoutesRouteIdRoute,
+  AuthenticatedAdminRoutesIndexRoute: AuthenticatedAdminRoutesIndexRoute,
 }
 
 const AuthenticatedAdminRouteWithChildren =
