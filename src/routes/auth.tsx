@@ -52,7 +52,7 @@ function AuthPage() {
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     const email = emailSchema.safeParse(form.email);
-    if (!email.success) return toast.error(email.error.issues[0].message);
+    if (!email.success) { toast.error(email.error.issues[0]?.message); return; }
     setBusy(true);
     try {
       if (mode === "forgot") {
@@ -64,10 +64,10 @@ function AuthPage() {
         return;
       }
       const pw = passwordSchema.safeParse(form.password);
-      if (!pw.success) return toast.error(pw.error.issues[0].message);
+      if (!pw.success) { toast.error(pw.error.issues[0]?.message); return; }
       if (mode === "signup") {
         const name = form.name.trim();
-        if (name.length < 2 || name.length > 120) return toast.error("Enter your full name");
+        if (name.length < 2 || name.length > 120) { toast.error("Enter your full name"); return; }
         const { data, error } = await supabase.auth.signUp({
           email: email.data,
           password: pw.data,

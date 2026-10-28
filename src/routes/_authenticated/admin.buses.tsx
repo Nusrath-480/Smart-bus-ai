@@ -34,7 +34,7 @@ function Buses() {
   const save = useMutation({
     mutationFn: async () => {
       const p = busSchema.safeParse(editing!.form);
-      if (!p.success) throw new Error(p.error.issues[0].message);
+      if (!p.success) throw new Error(p.error.issues[0]?.message);
       const row = { ...p.data, registration_number: p.data.registration_number || null, route_id: p.data.route_id === "none" ? null : p.data.route_id };
       const { error } = editing!.id ? await supabase.from("buses").update(row).eq("id", editing!.id) : await supabase.from("buses").insert(row);
       if (error) throw new Error(error.code === "23505" ? "A bus with that number already exists" : error.message);
@@ -86,7 +86,7 @@ function Buses() {
             <div className="grid gap-4">
               <div className="grid grid-cols-2 gap-3">
                 <div className="space-y-1.5"><Label>Bus number</Label><Input value={f.bus_number} onChange={(e) => set({ bus_number: e.target.value })} /></div>
-                <div className="space-y-1.5"><Label>Capacity</Label><Input type="number" value={String(f.capacity)} onChange={(e) => set({ capacity: e.target.value })} /></div>
+                <div className="space-y-1.5"><Label>Capacity</Label><Input type="number" value={String(f.capacity)} onChange={(e) => set({ capacity: Number(e.target.value) })} /></div>
               </div>
               <div className="space-y-1.5"><Label>Registration number</Label><Input value={f.registration_number} onChange={(e) => set({ registration_number: e.target.value })} /></div>
               <div className="grid grid-cols-2 gap-3">

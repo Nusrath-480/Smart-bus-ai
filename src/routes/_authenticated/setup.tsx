@@ -22,8 +22,8 @@ function Setup() {
     setBusy(true);
     const { data, error } = await supabase.rpc("claim_first_admin");
     setBusy(false);
-    if (error) return toast.error(error.message);
-    if (!data) return toast.error("An administrator already exists.");
+    if (error) { toast.error(error.message); return; }
+    if (!data) { toast.error("An administrator already exists."); return; }
     toast.success("You are now the administrator.");
     await qc.invalidateQueries();
     navigate({ to: "/admin" });
