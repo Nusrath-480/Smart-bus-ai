@@ -19,6 +19,7 @@ import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
 import { Route as AuthenticatedDriverRouteImport } from './routes/_authenticated/driver'
+import { Route as AuthenticatedNotificationsRouteImport } from './routes/_authenticated/notifications'
 import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
 import { Route as AuthenticatedSetupRouteImport } from './routes/_authenticated/setup'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
@@ -30,6 +31,7 @@ import { Route as AuthenticatedStudentIndexRouteImport } from './routes/_authent
 import { Route as AuthenticatedStudentRoutesRouteImport } from './routes/_authenticated/student.routes'
 import { Route as AuthenticatedAdminRoutesIndexRouteImport } from './routes/_authenticated/admin.routes.index'
 import { Route as AuthenticatedAdminRoutesRouteIdRouteImport } from './routes/_authenticated/admin.routes.$routeId'
+import { Route as AuthenticatedStudentBusBusIdRouteImport } from './routes/_authenticated/student.bus.$busId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -80,6 +82,12 @@ const AuthenticatedDriverRoute = AuthenticatedDriverRouteImport.update({
   path: '/driver',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedNotificationsRoute =
+  AuthenticatedNotificationsRouteImport.update({
+    id: '/notifications',
+    path: '/notifications',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedProfileRoute = AuthenticatedProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
@@ -141,6 +149,12 @@ const AuthenticatedAdminRoutesRouteIdRoute =
     path: '/routes/$routeId',
     getParentRoute: () => AuthenticatedAdminRoute,
   } as any)
+const AuthenticatedStudentBusBusIdRoute =
+  AuthenticatedStudentBusBusIdRouteImport.update({
+    id: '/student/bus/$busId',
+    path: '/student/bus/$busId',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -152,6 +166,7 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AuthenticatedAdminRouteWithChildren
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/driver': typeof AuthenticatedDriverRoute
+  '/notifications': typeof AuthenticatedNotificationsRoute
   '/profile': typeof AuthenticatedProfileRoute
   '/setup': typeof AuthenticatedSetupRoute
   '/admin/assignments': typeof AuthenticatedAdminAssignmentsRoute
@@ -162,6 +177,7 @@ export interface FileRoutesByFullPath {
   '/admin/': typeof AuthenticatedAdminIndexRoute
   '/student/': typeof AuthenticatedStudentIndexRoute
   '/admin/routes/$routeId': typeof AuthenticatedAdminRoutesRouteIdRoute
+  '/student/bus/$busId': typeof AuthenticatedStudentBusBusIdRoute
   '/admin/routes/': typeof AuthenticatedAdminRoutesIndexRoute
 }
 export interface FileRoutesByTo {
@@ -173,6 +189,7 @@ export interface FileRoutesByTo {
   '/reset-password': typeof ResetPasswordRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/driver': typeof AuthenticatedDriverRoute
+  '/notifications': typeof AuthenticatedNotificationsRoute
   '/profile': typeof AuthenticatedProfileRoute
   '/setup': typeof AuthenticatedSetupRoute
   '/admin/assignments': typeof AuthenticatedAdminAssignmentsRoute
@@ -183,6 +200,7 @@ export interface FileRoutesByTo {
   '/admin': typeof AuthenticatedAdminIndexRoute
   '/student': typeof AuthenticatedStudentIndexRoute
   '/admin/routes/$routeId': typeof AuthenticatedAdminRoutesRouteIdRoute
+  '/student/bus/$busId': typeof AuthenticatedStudentBusBusIdRoute
   '/admin/routes': typeof AuthenticatedAdminRoutesIndexRoute
 }
 export interface FileRoutesById {
@@ -197,6 +215,7 @@ export interface FileRoutesById {
   '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
   '/_authenticated/driver': typeof AuthenticatedDriverRoute
+  '/_authenticated/notifications': typeof AuthenticatedNotificationsRoute
   '/_authenticated/profile': typeof AuthenticatedProfileRoute
   '/_authenticated/setup': typeof AuthenticatedSetupRoute
   '/_authenticated/admin/assignments': typeof AuthenticatedAdminAssignmentsRoute
@@ -207,6 +226,7 @@ export interface FileRoutesById {
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
   '/_authenticated/student/': typeof AuthenticatedStudentIndexRoute
   '/_authenticated/admin/routes/$routeId': typeof AuthenticatedAdminRoutesRouteIdRoute
+  '/_authenticated/student/bus/$busId': typeof AuthenticatedStudentBusBusIdRoute
   '/_authenticated/admin/routes/': typeof AuthenticatedAdminRoutesIndexRoute
 }
 export interface FileRouteTypes {
@@ -221,6 +241,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/dashboard'
     | '/driver'
+    | '/notifications'
     | '/profile'
     | '/setup'
     | '/admin/assignments'
@@ -231,6 +252,7 @@ export interface FileRouteTypes {
     | '/admin/'
     | '/student/'
     | '/admin/routes/$routeId'
+    | '/student/bus/$busId'
     | '/admin/routes/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -242,6 +264,7 @@ export interface FileRouteTypes {
     | '/reset-password'
     | '/dashboard'
     | '/driver'
+    | '/notifications'
     | '/profile'
     | '/setup'
     | '/admin/assignments'
@@ -252,6 +275,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/student'
     | '/admin/routes/$routeId'
+    | '/student/bus/$busId'
     | '/admin/routes'
   id:
     | '__root__'
@@ -265,6 +289,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin'
     | '/_authenticated/dashboard'
     | '/_authenticated/driver'
+    | '/_authenticated/notifications'
     | '/_authenticated/profile'
     | '/_authenticated/setup'
     | '/_authenticated/admin/assignments'
@@ -275,6 +300,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/'
     | '/_authenticated/student/'
     | '/_authenticated/admin/routes/$routeId'
+    | '/_authenticated/student/bus/$busId'
     | '/_authenticated/admin/routes/'
   fileRoutesById: FileRoutesById
 }
@@ -360,6 +386,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDriverRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/notifications': {
+      id: '/_authenticated/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof AuthenticatedNotificationsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/profile': {
       id: '/_authenticated/profile'
       path: '/profile'
@@ -437,6 +470,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminRoutesRouteIdRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
+    '/_authenticated/student/bus/$busId': {
+      id: '/_authenticated/student/bus/$busId'
+      path: '/student/bus/$busId'
+      fullPath: '/student/bus/$busId'
+      preLoaderRoute: typeof AuthenticatedStudentBusBusIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
@@ -467,20 +507,24 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedAdminRoute: typeof AuthenticatedAdminRouteWithChildren
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
   AuthenticatedDriverRoute: typeof AuthenticatedDriverRoute
+  AuthenticatedNotificationsRoute: typeof AuthenticatedNotificationsRoute
   AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
   AuthenticatedSetupRoute: typeof AuthenticatedSetupRoute
   AuthenticatedStudentRoutesRoute: typeof AuthenticatedStudentRoutesRoute
   AuthenticatedStudentIndexRoute: typeof AuthenticatedStudentIndexRoute
+  AuthenticatedStudentBusBusIdRoute: typeof AuthenticatedStudentBusBusIdRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedAdminRoute: AuthenticatedAdminRouteWithChildren,
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
   AuthenticatedDriverRoute: AuthenticatedDriverRoute,
+  AuthenticatedNotificationsRoute: AuthenticatedNotificationsRoute,
   AuthenticatedProfileRoute: AuthenticatedProfileRoute,
   AuthenticatedSetupRoute: AuthenticatedSetupRoute,
   AuthenticatedStudentRoutesRoute: AuthenticatedStudentRoutesRoute,
   AuthenticatedStudentIndexRoute: AuthenticatedStudentIndexRoute,
+  AuthenticatedStudentBusBusIdRoute: AuthenticatedStudentBusBusIdRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
