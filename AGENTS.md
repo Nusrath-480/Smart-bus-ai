@@ -8,3 +8,9 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Architecture rules
+- Roles live in `user_roles` and are checked with `has_role()`; UI `RoleGate` is cosmetic, RLS is the real enforcement.
+- Signed-in pages live under `src/routes/_authenticated/` (client-only gate); shared queries in `src/lib/data.ts`, auth helpers in `src/lib/auth.ts`.
+- The first admin is created via the `claim_first_admin()` RPC, which only works while no admin exists; later admins are granted by admins.
+- Prediction/telemetry tables carry an `is_demo` flag so simulated data is never mixed with live data.

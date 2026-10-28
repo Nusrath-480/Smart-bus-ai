@@ -51,7 +51,7 @@ function Profile() {
   if (profile.isLoading) return <Loading />;
   return (
     <div className="mx-auto max-w-xl">
-      <PageTitle title="My profile" subtitle={user?.email ?? undefined} />
+      <PageTitle title="My profile" subtitle={user?.email ?? ""} />
       <div className="card-surface space-y-4 p-6">
         <div className="flex flex-wrap gap-2">{roles.map((r) => <StatusPill key={r} tone="teal">{r}</StatusPill>)}</div>
         <div className="space-y-1.5">
