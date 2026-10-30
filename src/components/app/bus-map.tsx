@@ -4,12 +4,12 @@ import { loadGoogleMaps } from "@/lib/google-maps";
 import { isStale, type LiveLocation } from "@/lib/live";
 
 type Stop = { id: string; name: string; latitude: number | null; longitude: number | null; sequence: number };
-type BusMarker = { id: string; label: string; location?: LiveLocation };
+type BusMarker = { id: string; label: string; location?: LiveLocation | undefined };
 
 const NAVY = "#111D3A", GOLD = "#F7C84B", TEAL = "#159B91";
 
 export function BusMap({ stops, buses, highlightStopId, className = "h-80" }: {
-  stops: Stop[]; buses: BusMarker[]; highlightStopId?: string | null; className?: string;
+  stops: Stop[]; buses: BusMarker[]; highlightStopId?: string | null | undefined; className?: string;
 }) {
   const el = useRef<HTMLDivElement>(null);
   const map = useRef<any>(null);
