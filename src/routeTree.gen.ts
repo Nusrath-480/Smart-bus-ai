@@ -25,6 +25,9 @@ import { Route as AuthenticatedSetupRouteImport } from './routes/_authenticated/
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
 import { Route as AuthenticatedAdminAssignmentsRouteImport } from './routes/_authenticated/admin.assignments'
 import { Route as AuthenticatedAdminBusesRouteImport } from './routes/_authenticated/admin.buses'
+import { Route as AuthenticatedAdminIncidentsRouteImport } from './routes/_authenticated/admin.incidents'
+import { Route as AuthenticatedAdminMonitorRouteImport } from './routes/_authenticated/admin.monitor'
+import { Route as AuthenticatedAdminReportsRouteImport } from './routes/_authenticated/admin.reports'
 import { Route as AuthenticatedAdminSchedulesRouteImport } from './routes/_authenticated/admin.schedules'
 import { Route as AuthenticatedAdminUsersRouteImport } from './routes/_authenticated/admin.users'
 import { Route as AuthenticatedStudentIndexRouteImport } from './routes/_authenticated/student.index'
@@ -114,6 +117,24 @@ const AuthenticatedAdminBusesRoute = AuthenticatedAdminBusesRouteImport.update({
   path: '/buses',
   getParentRoute: () => AuthenticatedAdminRoute,
 } as any)
+const AuthenticatedAdminIncidentsRoute =
+  AuthenticatedAdminIncidentsRouteImport.update({
+    id: '/incidents',
+    path: '/incidents',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminMonitorRoute =
+  AuthenticatedAdminMonitorRouteImport.update({
+    id: '/monitor',
+    path: '/monitor',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminReportsRoute =
+  AuthenticatedAdminReportsRouteImport.update({
+    id: '/reports',
+    path: '/reports',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
 const AuthenticatedAdminSchedulesRoute =
   AuthenticatedAdminSchedulesRouteImport.update({
     id: '/schedules',
@@ -171,6 +192,9 @@ export interface FileRoutesByFullPath {
   '/setup': typeof AuthenticatedSetupRoute
   '/admin/assignments': typeof AuthenticatedAdminAssignmentsRoute
   '/admin/buses': typeof AuthenticatedAdminBusesRoute
+  '/admin/incidents': typeof AuthenticatedAdminIncidentsRoute
+  '/admin/monitor': typeof AuthenticatedAdminMonitorRoute
+  '/admin/reports': typeof AuthenticatedAdminReportsRoute
   '/admin/schedules': typeof AuthenticatedAdminSchedulesRoute
   '/admin/users': typeof AuthenticatedAdminUsersRoute
   '/student/routes': typeof AuthenticatedStudentRoutesRoute
@@ -194,6 +218,9 @@ export interface FileRoutesByTo {
   '/setup': typeof AuthenticatedSetupRoute
   '/admin/assignments': typeof AuthenticatedAdminAssignmentsRoute
   '/admin/buses': typeof AuthenticatedAdminBusesRoute
+  '/admin/incidents': typeof AuthenticatedAdminIncidentsRoute
+  '/admin/monitor': typeof AuthenticatedAdminMonitorRoute
+  '/admin/reports': typeof AuthenticatedAdminReportsRoute
   '/admin/schedules': typeof AuthenticatedAdminSchedulesRoute
   '/admin/users': typeof AuthenticatedAdminUsersRoute
   '/student/routes': typeof AuthenticatedStudentRoutesRoute
@@ -220,6 +247,9 @@ export interface FileRoutesById {
   '/_authenticated/setup': typeof AuthenticatedSetupRoute
   '/_authenticated/admin/assignments': typeof AuthenticatedAdminAssignmentsRoute
   '/_authenticated/admin/buses': typeof AuthenticatedAdminBusesRoute
+  '/_authenticated/admin/incidents': typeof AuthenticatedAdminIncidentsRoute
+  '/_authenticated/admin/monitor': typeof AuthenticatedAdminMonitorRoute
+  '/_authenticated/admin/reports': typeof AuthenticatedAdminReportsRoute
   '/_authenticated/admin/schedules': typeof AuthenticatedAdminSchedulesRoute
   '/_authenticated/admin/users': typeof AuthenticatedAdminUsersRoute
   '/_authenticated/student/routes': typeof AuthenticatedStudentRoutesRoute
@@ -246,6 +276,9 @@ export interface FileRouteTypes {
     | '/setup'
     | '/admin/assignments'
     | '/admin/buses'
+    | '/admin/incidents'
+    | '/admin/monitor'
+    | '/admin/reports'
     | '/admin/schedules'
     | '/admin/users'
     | '/student/routes'
@@ -269,6 +302,9 @@ export interface FileRouteTypes {
     | '/setup'
     | '/admin/assignments'
     | '/admin/buses'
+    | '/admin/incidents'
+    | '/admin/monitor'
+    | '/admin/reports'
     | '/admin/schedules'
     | '/admin/users'
     | '/student/routes'
@@ -294,6 +330,9 @@ export interface FileRouteTypes {
     | '/_authenticated/setup'
     | '/_authenticated/admin/assignments'
     | '/_authenticated/admin/buses'
+    | '/_authenticated/admin/incidents'
+    | '/_authenticated/admin/monitor'
+    | '/_authenticated/admin/reports'
     | '/_authenticated/admin/schedules'
     | '/_authenticated/admin/users'
     | '/_authenticated/student/routes'
@@ -428,6 +467,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminBusesRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
+    '/_authenticated/admin/incidents': {
+      id: '/_authenticated/admin/incidents'
+      path: '/incidents'
+      fullPath: '/admin/incidents'
+      preLoaderRoute: typeof AuthenticatedAdminIncidentsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/monitor': {
+      id: '/_authenticated/admin/monitor'
+      path: '/monitor'
+      fullPath: '/admin/monitor'
+      preLoaderRoute: typeof AuthenticatedAdminMonitorRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/reports': {
+      id: '/_authenticated/admin/reports'
+      path: '/reports'
+      fullPath: '/admin/reports'
+      preLoaderRoute: typeof AuthenticatedAdminReportsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
     '/_authenticated/admin/schedules': {
       id: '/_authenticated/admin/schedules'
       path: '/schedules'
@@ -483,6 +543,9 @@ declare module '@tanstack/react-router' {
 interface AuthenticatedAdminRouteChildren {
   AuthenticatedAdminAssignmentsRoute: typeof AuthenticatedAdminAssignmentsRoute
   AuthenticatedAdminBusesRoute: typeof AuthenticatedAdminBusesRoute
+  AuthenticatedAdminIncidentsRoute: typeof AuthenticatedAdminIncidentsRoute
+  AuthenticatedAdminMonitorRoute: typeof AuthenticatedAdminMonitorRoute
+  AuthenticatedAdminReportsRoute: typeof AuthenticatedAdminReportsRoute
   AuthenticatedAdminSchedulesRoute: typeof AuthenticatedAdminSchedulesRoute
   AuthenticatedAdminUsersRoute: typeof AuthenticatedAdminUsersRoute
   AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
@@ -493,6 +556,9 @@ interface AuthenticatedAdminRouteChildren {
 const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
   AuthenticatedAdminAssignmentsRoute: AuthenticatedAdminAssignmentsRoute,
   AuthenticatedAdminBusesRoute: AuthenticatedAdminBusesRoute,
+  AuthenticatedAdminIncidentsRoute: AuthenticatedAdminIncidentsRoute,
+  AuthenticatedAdminMonitorRoute: AuthenticatedAdminMonitorRoute,
+  AuthenticatedAdminReportsRoute: AuthenticatedAdminReportsRoute,
   AuthenticatedAdminSchedulesRoute: AuthenticatedAdminSchedulesRoute,
   AuthenticatedAdminUsersRoute: AuthenticatedAdminUsersRoute,
   AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
