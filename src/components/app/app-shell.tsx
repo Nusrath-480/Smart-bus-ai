@@ -1,12 +1,13 @@
 import { Link, useNavigate } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import {
-  Bus, CalendarClock, Gauge, Home, LogOut, Map, Route as RouteIcon, User, UserCog, Users,
+  Bell, Bus, CalendarClock, Gauge, Home, LogOut, Map, Route as RouteIcon, User, UserCog, Users,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Brand } from "@/components/brand";
 import { useAuth, type AppRole } from "@/lib/auth";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useNotificationFeed } from "@/lib/notifications";
 
 type NavItem = { to: string; label: string; icon: typeof Home; exact?: boolean };
 
@@ -14,10 +15,12 @@ const navByRole: Record<AppRole, NavItem[]> = {
   student: [
     { to: "/student", label: "Home", icon: Home, exact: true },
     { to: "/student/routes", label: "Routes", icon: Map },
+    { to: "/notifications", label: "Alerts", icon: Bell },
     { to: "/profile", label: "Profile", icon: User },
   ],
   driver: [
     { to: "/driver", label: "Trip", icon: Gauge, exact: true },
+    { to: "/notifications", label: "Alerts", icon: Bell },
     { to: "/profile", label: "Profile", icon: User },
   ],
   admin: [
@@ -34,6 +37,7 @@ const navByRole: Record<AppRole, NavItem[]> = {
 export function AppShell({ children }: { children: ReactNode }) {
   const { user, role, loading } = useAuth();
   const navigate = useNavigate();
+  const unread = useNotificationFeed(user?.id);
   const items = role ? navByRole[role] : [{ to: "/profile", label: "Profile", icon: User }];
   const mobileItems = items.slice(0, 5);
 
@@ -57,7 +61,7 @@ export function AppShell({ children }: { children: ReactNode }) {
                   className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors hover:bg-sidebar-accent"
                   activeProps={{ className: "bg-sidebar-accent text-sidebar-primary" }}
                 >
-                  <i.icon className="h-4 w-4" /> {i.label}
+                  <i.icon className="h-4 w-4" /> {i.label} {i.to === "/notifications" && unread > 0 && <span className="ml-auto rounded-full bg-gold px-1.5 text-[10px] font-bold text-gold-foreground">{unread}</span>}
                 </Link>
               ))}
         </nav>
@@ -89,7 +93,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             className="flex flex-1 flex-col items-center gap-1 py-2.5 text-[11px] font-medium text-muted-foreground"
             activeProps={{ className: "text-teal" }}
           >
-            <i.icon className="h-5 w-5" /> {i.label}
+            <span className="relative"><i.icon className="h-5 w-5" />{i.to === "/notifications" && unread > 0 && <span className="absolute -right-1.5 -top-1 h-2.5 w-2.5 rounded-full bg-gold" />}</span> {i.label}
           </Link>
         ))}
       </nav>
