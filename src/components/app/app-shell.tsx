@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import {
-  Bell, Bus, CalendarClock, Gauge, Home, LogOut, Map, Route as RouteIcon, User, UserCog, Users,
+  BarChart3, Bell, Bus, CalendarClock, Radar, ShieldAlert, Gauge, Home, LogOut, Map, Route as RouteIcon, User, UserCog, Users,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Brand } from "@/components/brand";
@@ -25,11 +25,14 @@ const navByRole: Record<AppRole, NavItem[]> = {
   ],
   admin: [
     { to: "/admin", label: "Overview", icon: Gauge, exact: true },
+    { to: "/admin/monitor", label: "Monitor", icon: Radar },
+    { to: "/admin/incidents", label: "Incidents", icon: ShieldAlert },
     { to: "/admin/buses", label: "Buses", icon: Bus },
     { to: "/admin/routes", label: "Routes", icon: RouteIcon },
     { to: "/admin/schedules", label: "Schedules", icon: CalendarClock },
     { to: "/admin/assignments", label: "Assignments", icon: UserCog },
     { to: "/admin/users", label: "Users", icon: Users },
+    { to: "/admin/reports", label: "Reports", icon: BarChart3 },
     { to: "/profile", label: "Profile", icon: User },
   ],
 };
