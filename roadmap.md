@@ -4,6 +4,6 @@
 - [x] Phase 3: schema; buses, routes/stops, schedules, driver assignments, users
 - [x] Phase 4: student live map, bus detail, notifications (realtime)
 - [x] Phase 5: driver trips, GPS sharing, passenger counts, incident reports + alerts
-- [ ] Phase 6: admin fleet monitoring, incidents, reports
+- [x] Phase 6: fleet monitor + demo simulator, incidents, reports
 - [ ] Phase 7: ETA / occupancy prediction, recommendations, deviation detection
 - [ ] Phase 8: security review, testing, setup guide

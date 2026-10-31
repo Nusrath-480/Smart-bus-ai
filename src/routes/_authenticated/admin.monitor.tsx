@@ -60,10 +60,10 @@ function DemoSimulator({ buses }: { buses: { id: string; label: string; route_id
 
   async function start() {
     const bus = buses.find((b) => b.id === busId);
-    if (!bus?.route_id) return toast.error("Pick a bus that has a route");
+    if (!bus?.route_id) { toast.error("Pick a bus that has a route"); return; }
     const { data: stops } = await supabase.from("route_stops").select("latitude, longitude").eq("route_id", bus.route_id).order("sequence");
     const pts = (stops ?? []).filter((s) => s.latitude != null && s.longitude != null).map((s) => ({ lat: s.latitude!, lng: s.longitude! }));
-    if (pts.length < 2) return toast.error("That route needs at least 2 stops with coordinates");
+    if (pts.length < 2) { toast.error("That route needs at least 2 stops with coordinates"); return; }
     let t = 0;
     setRunning(true);
     const tick = async () => {

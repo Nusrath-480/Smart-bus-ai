@@ -33,7 +33,7 @@ function AdminHome() {
     { label: "Routes", value: s.routes, icon: RouteIcon, to: "/admin/routes" },
     { label: "Schedules", value: s.schedules, icon: CalendarClock, to: "/admin/schedules" },
     { label: "Drivers", value: s.drivers, sub: `${s.students} students`, icon: Users, to: "/admin/users" },
-    { label: "Open incidents", value: s.incidents, icon: ShieldAlert, to: "/admin" },
+    { label: "Open incidents", value: s.incidents, icon: ShieldAlert, to: "/admin/incidents" },
   ] as const;
   return (
     <div>
