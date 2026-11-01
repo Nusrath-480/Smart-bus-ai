@@ -11,7 +11,7 @@ import { DemoBadge, EmptyState, Loading, PageTitle, RoleGate, StatusPill } from 
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/_authenticated/student/")({
-  head: () => ({ meta: [{ title: "Student dashboard — SmartBus-AI" }, { name: "robots", content: "noindex" }] }),
+  head: () => ({ meta: [{ title: "Student dashboard — SmartBus-AI" }, { name: "description", content: "View your campus bus journey and available bus positions." }, { property: "og:title", content: "Student dashboard — SmartBus-AI" }, { property: "og:description", content: "View your campus bus journey and available bus positions." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }, { name: "robots", content: "noindex" }] }),
   component: () => <RoleGate allow={["student", "admin"]}><StudentHome /></RoleGate>,
 });
 

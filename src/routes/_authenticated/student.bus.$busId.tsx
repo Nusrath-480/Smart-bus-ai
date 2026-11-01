@@ -11,7 +11,7 @@ import { BusMap } from "@/components/app/bus-map";
 import { DemoBadge, EmptyState, Loading, RoleGate, StatusPill } from "@/components/app/ui";
 
 export const Route = createFileRoute("/_authenticated/student/bus/$busId")({
-  head: () => ({ meta: [{ title: "Bus details — SmartBus-AI" }, { name: "robots", content: "noindex" }] }),
+  head: () => ({ meta: [{ title: "Bus details — SmartBus-AI" }, { name: "description", content: "View bus positions, stops, timetable and arrival estimates." }, { property: "og:title", content: "Bus details — SmartBus-AI" }, { property: "og:description", content: "View bus positions, stops, timetable and arrival estimates." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }, { name: "robots", content: "noindex" }] }),
   component: () => <RoleGate allow={["student", "admin", "driver"]}><BusDetail /></RoleGate>,
 });
 

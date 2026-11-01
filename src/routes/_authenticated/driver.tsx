@@ -16,7 +16,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 export const Route = createFileRoute("/_authenticated/driver")({
-  head: () => ({ meta: [{ title: "Driver dashboard — SmartBus-AI" }, { name: "robots", content: "noindex" }] }),
+  head: () => ({ meta: [{ title: "Driver dashboard — SmartBus-AI" }, { name: "description", content: "Manage your assigned trip, passenger counts and incident reports." }, { property: "og:title", content: "Driver dashboard — SmartBus-AI" }, { property: "og:description", content: "Manage your assigned trip, passenger counts and incident reports." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }, { name: "robots", content: "noindex" }] }),
   component: () => <RoleGate allow={["driver", "admin"]}><DriverHome /></RoleGate>,
 });
 

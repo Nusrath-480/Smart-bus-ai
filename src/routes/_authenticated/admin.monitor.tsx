@@ -13,7 +13,9 @@ import { DemoBadge, Loading, PageTitle, StatusPill } from "@/components/app/ui";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
-export const Route = createFileRoute("/_authenticated/admin/monitor")({ component: Monitor });
+export const Route = createFileRoute("/_authenticated/admin/monitor")({
+  head: () => ({ meta: [{ title: "Fleet monitor — SmartBus-AI" }, { name: "description", content: "View bus positions and labelled DEMO simulations." }, { property: "og:title", content: "Fleet monitor — SmartBus-AI" }, { property: "og:description", content: "View bus positions and labelled DEMO simulations." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }, { name: "robots", content: "noindex" }] }),
+  component: Monitor });
 
 function Monitor() {
   const buses = useQuery(busesQuery);

@@ -12,7 +12,9 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
-export const Route = createFileRoute("/_authenticated/admin/routes/")({ component: Routes });
+export const Route = createFileRoute("/_authenticated/admin/routes/")({
+  head: () => ({ meta: [{ title: "Manage routes — SmartBus-AI" }, { name: "description", content: "Manage campus transport routes." }, { property: "og:title", content: "Manage routes — SmartBus-AI" }, { property: "og:description", content: "Manage campus transport routes." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }, { name: "robots", content: "noindex" }] }),
+  component: Routes });
 
 function Routes() {
   const qc = useQueryClient();

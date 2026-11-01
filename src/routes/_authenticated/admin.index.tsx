@@ -5,6 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Loading, PageTitle } from "@/components/app/ui";
 
 export const Route = createFileRoute("/_authenticated/admin/")({
+  head: () => ({ meta: [{ title: "Fleet overview — SmartBus-AI" }, { name: "description", content: "Review SmartBus-AI fleet and transport activity." }, { property: "og:title", content: "Fleet overview — SmartBus-AI" }, { property: "og:description", content: "Review SmartBus-AI fleet and transport activity." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }, { name: "robots", content: "noindex" }] }),
   component: AdminHome,
 });
 

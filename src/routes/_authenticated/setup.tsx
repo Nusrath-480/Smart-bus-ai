@@ -8,7 +8,7 @@ import { EmptyState, Loading, PageTitle } from "@/components/app/ui";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/_authenticated/setup")({
-  head: () => ({ meta: [{ title: "Admin setup — SmartBus-AI" }, { name: "robots", content: "noindex" }] }),
+  head: () => ({ meta: [{ title: "Admin setup — SmartBus-AI" }, { name: "description", content: "Complete the initial SmartBus-AI administrator setup." }, { property: "og:title", content: "Admin setup — SmartBus-AI" }, { property: "og:description", content: "Complete the initial SmartBus-AI administrator setup." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }, { name: "robots", content: "noindex" }] }),
   component: Setup,
 });
 

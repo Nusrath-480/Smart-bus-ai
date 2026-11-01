@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/_authenticated/notifications")({
-  head: () => ({ meta: [{ title: "Notifications — SmartBus-AI" }, { name: "robots", content: "noindex" }] }),
+  head: () => ({ meta: [{ title: "Notifications — SmartBus-AI" }, { name: "description", content: "View your personal SmartBus-AI transport alerts." }, { property: "og:title", content: "Notifications — SmartBus-AI" }, { property: "og:description", content: "View your personal SmartBus-AI transport alerts." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }, { name: "robots", content: "noindex" }] }),
   component: Notifications,
 });
 

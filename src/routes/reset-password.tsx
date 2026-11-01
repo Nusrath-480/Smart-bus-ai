@@ -10,6 +10,9 @@ import { Label } from "@/components/ui/label";
 export const Route = createFileRoute("/reset-password")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+      { name: "robots", content: "noindex" },
       { title: "Set a new password — SmartBus-AI" },
       { name: "description", content: "Choose a new password for your SmartBus-AI account." },
       { property: "og:title", content: "Reset password — SmartBus-AI" },

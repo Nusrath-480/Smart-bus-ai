@@ -10,7 +10,9 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
-export const Route = createFileRoute("/_authenticated/admin/assignments")({ component: Assignments });
+export const Route = createFileRoute("/_authenticated/admin/assignments")({
+  head: () => ({ meta: [{ title: "Driver assignments — SmartBus-AI" }, { name: "description", content: "Manage campus bus and driver assignments." }, { property: "og:title", content: "Driver assignments — SmartBus-AI" }, { property: "og:description", content: "Manage campus bus and driver assignments." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }, { name: "robots", content: "noindex" }] }),
+  component: Assignments });
 
 function Assignments() {
   const qc = useQueryClient();
