@@ -5,5 +5,5 @@
 - [x] Phase 4: student live map, bus detail, notifications (realtime)
 - [x] Phase 5: driver trips, GPS sharing, passenger counts, incident reports + alerts
 - [x] Phase 6: fleet monitor + demo simulator, incidents, reports
-- [ ] Phase 7: ETA / occupancy prediction, recommendations, deviation detection
+- [x] Phase 7: ETA / occupancy prediction, recommendations, deviation detection
 - [ ] Phase 8: security review, testing, setup guide
