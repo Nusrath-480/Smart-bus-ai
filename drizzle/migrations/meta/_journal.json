@@ -15,6 +15,13 @@
       "when": 1793355059269,
       "tag": "0001_incident_notifications",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1793521735095,
+      "tag": "0002_harden_operational_access",
+      "breakpoints": true
     }
   ]
 }
