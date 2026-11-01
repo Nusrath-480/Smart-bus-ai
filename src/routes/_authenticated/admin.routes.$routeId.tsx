@@ -9,7 +9,9 @@ import { EmptyState, Loading, PageTitle } from "@/components/app/ui";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-export const Route = createFileRoute("/_authenticated/admin/routes/$routeId")({ component: RouteStops });
+export const Route = createFileRoute("/_authenticated/admin/routes/$routeId")({
+  head: () => ({ meta: [{ title: "Route stops — SmartBus-AI" }, { name: "description", content: "Manage the ordered stops on a campus bus route." }, { property: "og:title", content: "Route stops — SmartBus-AI" }, { property: "og:description", content: "Manage the ordered stops on a campus bus route." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }, { name: "robots", content: "noindex" }] }),
+  component: RouteStops });
 
 function RouteStops() {
   const { routeId } = Route.useParams();

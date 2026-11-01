@@ -11,7 +11,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
-export const Route = createFileRoute("/_authenticated/admin/schedules")({ component: Schedules });
+export const Route = createFileRoute("/_authenticated/admin/schedules")({
+  head: () => ({ meta: [{ title: "Schedules — SmartBus-AI" }, { name: "description", content: "Manage departure times and operating days." }, { property: "og:title", content: "Schedules — SmartBus-AI" }, { property: "og:description", content: "Manage departure times and operating days." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }, { name: "robots", content: "noindex" }] }),
+  component: Schedules });
 
 const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 

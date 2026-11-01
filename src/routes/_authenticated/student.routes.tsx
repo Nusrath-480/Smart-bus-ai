@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/_authenticated/student/routes")({
-  head: () => ({ meta: [{ title: "Routes & stops — SmartBus-AI" }, { name: "robots", content: "noindex" }] }),
+  head: () => ({ meta: [{ title: "Routes and stops — SmartBus-AI" }, { name: "description", content: "Choose a campus bus route and boarding stop." }, { property: "og:title", content: "Routes and stops — SmartBus-AI" }, { property: "og:description", content: "Choose a campus bus route and boarding stop." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }, { name: "robots", content: "noindex" }] }),
   component: () => <RoleGate allow={["student", "admin"]}><StudentRoutes /></RoleGate>,
 });
 

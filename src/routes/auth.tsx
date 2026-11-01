@@ -18,6 +18,9 @@ export const Route = createFileRoute("/auth")({
   validateSearch: searchSchema,
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+      { name: "robots", content: "noindex" },
       { title: "Sign in — SmartBus-AI" },
       { name: "description", content: "Sign in or create your SmartBus-AI account." },
       { property: "og:title", content: "Sign in — SmartBus-AI" },

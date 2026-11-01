@@ -13,7 +13,9 @@ import { Label } from "@/components/ui/label";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
-export const Route = createFileRoute("/_authenticated/admin/buses")({ component: Buses });
+export const Route = createFileRoute("/_authenticated/admin/buses")({
+  head: () => ({ meta: [{ title: "Buses — SmartBus-AI" }, { name: "description", content: "Manage campus buses and seat capacities." }, { property: "og:title", content: "Buses — SmartBus-AI" }, { property: "og:description", content: "Manage campus buses and seat capacities." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }, { name: "robots", content: "noindex" }] }),
+  component: Buses });
 
 const busSchema = z.object({
   bus_number: z.string().trim().min(1, "Bus number required").max(20),

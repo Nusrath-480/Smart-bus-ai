@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 export const Route = createFileRoute("/_authenticated/profile")({
-  head: () => ({ meta: [{ title: "My profile — SmartBus-AI" }, { name: "robots", content: "noindex" }] }),
+  head: () => ({ meta: [{ title: "My profile — SmartBus-AI" }, { name: "description", content: "Manage your SmartBus-AI profile and journey preferences." }, { property: "og:title", content: "My profile — SmartBus-AI" }, { property: "og:description", content: "Manage your SmartBus-AI profile and journey preferences." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }, { name: "robots", content: "noindex" }] }),
   component: Profile,
 });
 

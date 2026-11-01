@@ -11,7 +11,9 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 
-export const Route = createFileRoute("/_authenticated/admin/incidents")({ component: Incidents });
+export const Route = createFileRoute("/_authenticated/admin/incidents")({
+  head: () => ({ meta: [{ title: "Incidents — SmartBus-AI" }, { name: "description", content: "Review transport incident reports and their resolution." }, { property: "og:title", content: "Incidents — SmartBus-AI" }, { property: "og:description", content: "Review transport incident reports and their resolution." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }, { name: "robots", content: "noindex" }] }),
+  component: Incidents });
 
 const sevTone = { low: "muted", medium: "teal", high: "warning", critical: "danger" } as const;
 

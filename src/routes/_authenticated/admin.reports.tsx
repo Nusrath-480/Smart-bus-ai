@@ -6,7 +6,9 @@ import { supabase } from "@/integrations/supabase/client";
 import { EmptyState, Loading, PageTitle } from "@/components/app/ui";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-export const Route = createFileRoute("/_authenticated/admin/reports")({ component: Reports });
+export const Route = createFileRoute("/_authenticated/admin/reports")({
+  head: () => ({ meta: [{ title: "Reports — SmartBus-AI" }, { name: "description", content: "Review trips, real passenger counts and incidents." }, { property: "og:title", content: "Reports — SmartBus-AI" }, { property: "og:description", content: "Review trips, real passenger counts and incidents." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }, { name: "robots", content: "noindex" }] }),
+  component: Reports });
 
 function Reports() {
   const [days, setDays] = useState("7");

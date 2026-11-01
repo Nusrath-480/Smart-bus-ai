@@ -9,7 +9,9 @@ import { EmptyState, Loading, PageTitle, StatusPill } from "@/components/app/ui"
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-export const Route = createFileRoute("/_authenticated/admin/users")({ component: Users });
+export const Route = createFileRoute("/_authenticated/admin/users")({
+  head: () => ({ meta: [{ title: "Users and access — SmartBus-AI" }, { name: "description", content: "Manage student, driver and administrator access." }, { property: "og:title", content: "Users and access — SmartBus-AI" }, { property: "og:description", content: "Manage student, driver and administrator access." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }, { name: "robots", content: "noindex" }] }),
+  component: Users });
 
 function Users() {
   const qc = useQueryClient();
