@@ -6,4 +6,5 @@
 - [x] Phase 5: driver trips, GPS sharing, passenger counts, incident reports + alerts
 - [x] Phase 6: fleet monitor + demo simulator, incidents, reports
 - [x] Phase 7: ETA / occupancy prediction, recommendations, deviation detection
-- [ ] Phase 8: security review, testing, setup guide (in progress; deeper security scan pending)
+- [x] Phase 8: security review, testing, setup guide
+- [ ] Deployment acceptance: real-phone GPS trip and alert delivery (requires an assigned driver and physical device); hosted sign-in/email delivery and real transport-office contact (requires final website setup and office details).
