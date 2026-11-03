@@ -8,7 +8,6 @@ import { useAuth, homePathFor } from "@/lib/auth";
 const links = [
   { to: "/", label: "Home" },
   { to: "/features", label: "Features" },
-  { to: "/how-it-works", label: "How It Works" },
   { to: "/about", label: "About" },
 ] as const;
 
